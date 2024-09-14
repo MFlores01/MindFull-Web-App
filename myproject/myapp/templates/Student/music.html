@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify Playlist Generator</title>
+  <style>
+    .btn-spotify {
+      display: block;
+      padding: 0.6rem 2rem;
+      margin: 1rem;
+      transition: all 0.1s;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      color: #fff;
+      background-color: #1db954;
+    }
+
+    .btn-spotify:hover {
+      background-color: #1ed760;
+    }
+  </style>
+</head>
+<body>
+  <h1>Spotify Playlist Generator</h1>
+  <button onclick="authorizeSpotify()">Generate Playlist</button>
+  <button class="btn-spotify" onclick="authenticateWithSpotify()">
+    Authenticate with Spotify
+  </button>
+
+  <div id="playlistsContainer"></div>
+
+  <script>
+    const clientId = 'ade497b7251748bfba9858a3ab0aa72f';
+    const redirectUri = 'http://127.0.0.1:8000/dashboard/music/';
+    const scopes = 'user-library-read playlist-read-private';
+
+    function authenticateWithSpotify() {
+      const authorizeUrl = 'http://127.0.0.1:8000';
+       window.location.replace(authorizeUrl);
+    }
+
+
+    function getAccessToken() {
+      const hashParams = window.location.hash.substr(1).split('&');
+      const params = {};
+
+      for (let i = 0; i < hashParams.length; i++) {
+        const [key, val] = hashParams[i].split('=');
+        params[key] = decodeURIComponent(val);
+      }
+
+      return params.access_token;
+    }
+
+    function displayPlaylists(playlists) {
+      const playlistsContainer = document.getElementById('playlistsContainer');
+      playlistsContainer.innerHTML = '';
+
+      playlists.items.forEach(playlist => {
+        const playlistDiv = document.createElement('div');
+        playlistDiv.innerHTML = `<strong>${playlist.name}</strong> (${playlist.tracks.total} tracks)`;
+        playlistsContainer.appendChild(playlistDiv);
+      });
+    }
+
+    function authenticateWithSpotify() {
+      // Replace 'your_spotify_auth_url' with the actual URL from your Django app
+      window.location.href = 'your_spotify_auth_url';
+    }
+
+    function fetchPlaylists() {
+      const accessToken = getAccessToken();
+      console.log('Access Token:', accessToken);
+
+      fetch('https://api.spotify.com/v1/me/playlists', {
+        headers: {
+          'Authorization': `Bearer ${accessToken}`
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Playlists Data:', data);
+        displayPlaylists(data);
+      })
+      .catch(error => console.error('Error fetching playlists:', error));
+    }
+
+    // Check for access token in the URL hash when redirected from Spotify
+    if (window.location.hash) {
+      fetchPlaylists();
+    }
+  </script>
+</body>
+</html>

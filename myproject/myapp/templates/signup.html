@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="/static/css/signup.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+      </head>
+<body>
+    <section>
+      <div class="container">
+        <div class="user signinBx">
+          <div class="imgBx"><img src="/static/images/students5.png" alt="" /></div>
+          <div class="formBx">
+            
+            <form method="post" action="{% url 'myapp:signup' %}">
+              {% csrf_token %}
+              <h2>Sign Up As A Student</h2>
+              <input type="text" id="username" placeholder="Username" name="username" required>
+              <input type="password" name="password1" placeholder="Create Password" />
+              <input type="password" name="password2" placeholder="Confirm Password" />
+              <div class="error-message">
+                {% if error_message %}
+                    <p style="color: red;">{{ error_message }}</p>
+                {% endif %}
+              </div>
+              <div class="button-container">
+                <button type="submit" class="signup-button">Sign Up</button>
+              </div>
+              <p class="signup">
+                Already have an account ?
+                <a href="{% url 'myapp:login' %}">Sign In Here.</a>
+              </p>
+            </form>
+    
+          </div>
+        </div>

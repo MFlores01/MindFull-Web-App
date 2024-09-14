@@ -12,8 +12,14 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -118,7 +124,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'myapp.CustomUser'
+
+
+#AUTH_USER_MODEL = 'myapp.CustomUser'
+SPOTIPY_CLIENT_ID = 'ade497b7251748bfba9858a3ab0aa72f'
+SPOTIPY_CLIENT_SECRET = '55d39b0488884bc6a981d9e5eca8ae55'
+SPOTIPY_REDIRECT_URI = 'http://127.0.0.1:8000'

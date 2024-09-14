@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard | By Code Info</title>
+  <!-- Font Awesome Cdn Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+  <!-- Import Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700">
+  <link rel="stylesheet" type="text/css" href="/static/css/new.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/music.css">
+  <script src="/static/css/new.css" defer></script>
+  <script src="/static/css/music.css" defer></script>
+
+</head>
+<body>
+  <div class="container">
+    <section class="main" id="mainSection">
+      <div class="main-top">
+        <h1>Home</h1>
+        <i class="fas fa-user-cog"></i>
+      </div>
+      <div class="main-skills">
+        <div class="card">
+          <i class="journal-icon"></i>
+          <h3>Journal Entries</h3>
+          <p>Reflect and document your </br>thoughts and experiences.</p>
+          <button id="journalButton">Get Started</button>
+        </div>
+        <div class="card">
+          <i class="moodtracker-icon"></i>
+          <h3>Moodtracker</h3>
+          <p>Track and analyze your </br>mood patterns.</p>
+          <button>Get Started</button>
+        </div>
+        <div class="card">
+          <i class="music-icon"></i>
+          <h3>Music Recomendation</h3>
+          <p>Discover personalized music </br>recommendations.</p>
+          <button id="musicButton">Get Started</button>
+        </div>
+        <div class="card">
+          <i class="fab fa-app-store-ios"></i>
+          <h3>IOS dev</h3>
+          <p>Join Over 1 million Students.</p>
+          <button>Get Started</button>
+        </div>
+      </div>
+
+      <section class="main-course">
+        <h1>My courses</h1>
+        <div class="course-box">
+          <ul>
+            <li class="active">In progress</li>
+            <li>Explore</li>
+            <li>Incoming</li>
+            <li>Finished</li>
+          </ul>
+          <div class="course">
+            <div class="box">
+              <h3>HTML</h3>
+              <p>80% - progress</p>
+              <button>Continue</button>
+              <i class="fab fa-html5 html"></i>
+            </div>
+            <div class="box">
+              <h3>CSS</h3>
+              <p>50% - progress</p>
+              <button>Continue</button>
+              <i class="fab fa-css3-alt css"></i>
+            </div>
+            <div class="box">
+              <h3>JavaScript</h3>
+              <p>30% - progress</p>
+              <button>Continue</button>
+              <i class="fab fa-js-square js"></i>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+      <!-- MUSIC SECTION -->
+
+      <section class="main" id="musicSection" style="display: none;">
+
+        <h1>Music Player</h1>
+        <p class="subtitle">Category</p>
+        <li>
+        <div class="main1-skills">
+          <div class="card">
+            <i class="classical-icon"></i>
+            <h3>CLASSICAL</h3>
+            <p>Timeless orchestral beauty and refined compositions for an elegant experience.</p>
+            <button id="musicClassicalButton">Play</button>
+          </div>
+
+          <div class="card">
+            <i class="nature-icon"></i>
+            <h3>NATURE</h3>
+            <p>Soothing sounds of the natural world, from forests to beaches and bird-filled meadows.</p>
+            <button>Play</button>
+          </div>
+
+          <div class="card">
+            <i class="lofi-icon"></i>
+            <h3>LOFI</h3>
+            <p>Relaxing raindrop rhythms create a calming ambiance for tranquility.</p>
+            <button id="musicLofiButton">Play</button>
+          </div></li>
+      </section>
+
+      <!-- MUSIC Lofi Section-->
+      <section class="main" id="musicClassicalSection" style="display: none;">
+        <h1>Classical Music</h1>
+        <div class="container">
+          <!-- Main Content -->
+          <div class="main">
+            <p id="logo"><i class="fa fa-music"></i>Music</p>
+      
+            <!-- show_song_number -->
+            <div class="show_song_no">
+              <p id="present">1</p>
+              <p>/</p>
+              <p id="total">5</p>
+            </div>
+      
+            <!-- left part -->
+            <div class="left">
+              <!-- song img -->
+              <img id="track_image">
+              <div class="volume">
+                <p id="volume_show">90</p>
+                <i class="fa fa-volume-up" aria-hidden="true" onclick="mute_sound()" id="volume_icon"></i>
+                <input type="range" min="0" max="100" value="90" onchange="volume_change()" id="volume">
+              </div>
+            </div>
+      
+            <!-- right part -->
+            <div class="right">
+              <!-- song title & artist name -->
+              <div class="song_detail">
+                <p id="title">title.mp3</p>
+                <p id="artist">Artist name</p>
+              </div>
+      
+              <!-- middle part -->
+              <div class="middle">
+                <button onclick="previous_song()" id="pre"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
+                <button onclick="justplay()" id="play"><i class="fa fa-play" aria-hidden="true"></i></button>
+                <button onclick="next_song()" id="next"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
+              </div>
+      
+              <!-- song duration part -->
+              <div class="duration">
+                <input type="range" min="0" max="100" value="0" id="duration_slider" onchange="change_duration()">
+                <button id="auto" onclick="autoplay_switch()">Auto &nbsp;<i class="fa fa-circle-o-notch" aria-hidden="true"></i></button>
+              </div>
+            </div>
+      
+          </div>
+      
+          <!-- Playlist Section -->
+          <div class="playlist">
+            <h2>Playlist</h2>
+            <ul>
+              <li>Song 1</li>
+              <li>Song 2</li>
+              <li>Song 3</li>
+              <!-- Add more songs as needed -->
+            </ul>
+          </div>
+        </div>
+
+      </section>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,388 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+
+  body {
+    background: #ECE3CE;
+  }
+
+  .container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column-reverse;
+  }
+
+
+  .logo {
+    text-align: center;
+    display: flex;
+    margin: 10px 0 0 10px;
+  }
+
+  .logo img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+  }
+
+  .logo span {
+    font-weight: bold;
+    padding-left: 15px;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+
+  a {
+    position: relative;
+    color: #4F6F52;
+    font-size: 14px;
+    display: table;
+    width: 280px;
+    padding: 10px;
+  }
+
+  nav .fas {
+    position: relative;
+    width: 70px;
+    height: 40px;
+    top: 14px;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .nav-item {
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
+  }
+
+  a:hover {
+    background: #ECE3CE;
+  }
+
+  .logout {
+    position: absolute;
+    bottom: 0;
+  }
+/* --------------- ICONS --------- */
+
+.journal-icon::before {
+    content: "\1F4D3"; 
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .moodtracker-icon::before {
+    content: "\1F60A"; 
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .music-icon::before {
+    content: "\1F3B5"; 
+    font-family: 'Arial', sans-serif;
+  }
+  
+
+/* --------------- MAIN SECTION --------- */
+  .main {
+    position: relative;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    transition: background 0.3s; /* Smooth transition for background color change */
+  }
+
+  .main-top {
+    display: flex;
+    width: 100%;
+  }
+
+  /*ICON TOP RIGHT*/
+  .main-top i {
+    position: absolute;
+    right: 0;
+    margin: 10px 30px;
+    color: rgb(110, 109, 109);
+    cursor: pointer;
+  }
+
+  .main-skills {
+    display: flex;
+    margin-top: 20px;
+  }
+
+  .main-skills .card {
+    width: 33%;
+    margin: 10px;
+    background: #fff;
+    text-align: center;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+
+  .main-skills .card h3 {
+    margin: 10px;
+    text-transform: capitalize;
+    color: #4F6F52;
+  }
+
+  .main-skills .card p {
+    font-size: 12px;
+    color: #4F6F52;
+  }
+
+  .main-skills .card button {
+    background: #65451F;
+    color: #fff;
+    padding: 7px 15px;
+    border-radius: 10px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    height: 40px;
+    width: 150px;
+
+  }
+
+  .main-skills .card button:hover {
+    background: rgba(223, 70, 15, 0.856);
+  }
+
+  /* Courses */
+  .main-course {
+    margin-top: 20px;
+    text-transform: capitalize;
+  }
+
+  .course-box {
+    width: 100%;
+    height: 300px;
+    padding: 10px 10px 30px 10px;
+    margin-top: 10px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+
+  .course-box ul {
+    list-style: none; /* This removes the bullets */
+    display: flex;
+  }
+
+  .course-box ul li {
+    margin: 10px;
+    color: gray;
+    cursor: pointer;
+  }
+
+  .course-box ul .active {
+    color: #000;
+    border-bottom: 1px solid #000;
+  }
+
+  .course-box .course {
+    display: flex;
+  }
+
+  .box {
+    width: 33%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    background: rgb(235, 233, 233);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+
+  .box p {
+    font-size: 12px;
+    margin-top: 5px;
+  }
+
+  .box button {
+    background: #000;
+    color: #fff;
+    padding: 7px 10px;
+    border-radius: 10px;
+    margin-top: 3rem;
+    cursor: pointer;
+  }
+
+  .box button:hover {
+    background: rgba(0, 0, 0, 0.842);
+  }
+
+  .box i {
+    font-size: 7rem;
+    float: right;
+    margin: -20px 20px 20px 0;
+  }
+
+  .html {
+    color: rgb(25, 94, 54);
+  }
+
+  .css {
+    color: rgb(104, 179, 35);
+  }
+
+  .js {
+    color: rgb(28, 98, 179);
+  }
+
+/* -------------------- CHAT SECTION --------------------------- */
+
+#chatSection button {
+    background: #000;
+    color: #fff;
+    padding: 7px 10px;
+    border-radius: 10px;
+    margin-top: 3rem;
+    cursor: pointer;
+}
+
+#chatSection button:hover {
+    background: rgba(0, 0, 0, 0.842);
+}
+
+/* -------------------- CALENDAR SECTION --------------------------- */
+
+#calendarSection button {
+    background: #000;
+    color: #fff;
+    padding: 7px 10px;
+    border-radius: 10px;
+    margin-top: 3rem;
+    cursor: pointer;
+}
+
+#calendarSection button:hover {
+    background: rgba(0, 0, 0, 0.842);
+}
+
+/* -------------------- MUSIC SECTION --------------------------- */
+
+#musicSection h1 {
+  margin: 10px;
+  margin-top: 0;
+  text-transform: capitalize;
+  color: #4F6F52;
+  font-size: 45px;
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#musicSection .subtitle {
+  margin: 10px;
+  text-transform: capitalize;
+  color: #4F6F52;
+  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#musicSection .category {
+  display: flex;
+  align-items: center; 
+  padding: 10px;
+  background-color: #ECE3CE;
+  color: #4F6F52;
+  text-decoration: none;
+  cursor: pointer;
+  height: 80px;  
+  width: 100%; 
+  box-sizing: border-box; 
+}
+
+#musicSection .category:hover {
+  background-color: #e8d4a4;
+}
+
+#musicSection ul {
+  list-style: none; /* Remove default list styles */
+  padding: 0; /* Remove default padding */
+}
+
+#musicSection li {
+  list-style: none;
+  margin-bottom: 0; /* Add spacing between list items */
+}
+
+.main1-skills {
+  display: flex;
+  margin-top: 20px;
+}
+
+.main1-skills .card {
+  width: 33%;
+  margin: 10px;
+  background: rgba(255, 255, 255, 0.3); /* Slightly transparent white background */
+  text-align: center;
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease; /* Smooth transition for the background change */
+}
+
+.main1-skills .card:hover {
+  background: rgb(255, 251, 237); /* Fully opaque white background on hover */
+}
+
+.main1-skills .card h3 {
+  margin: 10px;
+  text-transform: capitalize;
+  color: #4F6F52;
+  font-size: 30px; /* --------------------------------------------------------------------------------------*/
+}
+
+.main1-skills .card p {
+  font-size: 12px;
+  color: #4F6F52;
+}
+
+.main1-skills .card button {
+  background: #65451F;
+  color: #fff;
+  padding: 7px 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  height: 40px;
+  width: 150px;
+
+}
+
+.main1-skills .card button:hover {
+  background: #4F6F52;
+}
+
+.main1-skills .card i {
+  font-size: 22px;
+  padding: 10px;
+}
+
+.classical-icon::before {
+  content: "\1F3BC"; 
+  font-size: 20px; 
+  color: #4F6F52; 
+}
+
+.nature-icon::before {
+  content: "\1F331"; 
+  font-size: 20px;
+  color: #4F6F52;
+}
+
+.lofi-icon::before {
+  content: "\1F3B5";
+  font-size: 15px;
+  color: #4F6F52;
+}

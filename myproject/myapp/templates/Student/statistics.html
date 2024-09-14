@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="logo.png" type="image/png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+
+body {
+  font-family: 'Space Mono', monospace;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: rgba(175, 238, 238, 0.3);
+}
+
+.header {
+  text-align: center;
+  width: 85%;
+  margin-top: 30px;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  color: #4F6F52;
+  margin-bottom: 20px;
+}
+
+.statistics-container {
+  width: 70%;
+  margin-top: 20px;
+}
+
+.line-chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+  </style>
+  <title>Mindful</title>
+</head>
+<body>
+  <div class="header">
+    <h1>Weekly Mood Statistics</h1>
+  </div>
+  <div class="statistics-container">
+    <div class="line-chart-container">
+      <canvas id="emojiLineChart"></canvas>
+    </div>
+  </div>
+
+  <script>
+    const weekly_statistics = [0, 1, 2, 3, 4, 5, -1];  // Replace with actual data
+
+    const emojiMappings = {
+      0: 'Happy',
+      1: 'Neutral',
+      2: 'Sad',
+      3: 'Annoyed',
+      4: 'Angry',
+      5: 'Scared',
+    };
+
+    const chartData = {
+      labels: Array.from({ length: weekly_statistics.length }, (_, i) => `Day ${i + 1}`),
+      datasets: [{
+        label: 'Clicked Emojis',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 2,
+        fill: false,
+        data: weekly_statistics.map(emotionNumber => emotionNumber !== -1 ? 1 : 0),
+      }],
+    };
+
+    const chartOptions = {
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: 1,
+        },
+      },
+    };
+
+    const emojiLineChart = new Chart(document.getElementById('emojiLineChart'), {
+      type: 'line',
+      data: chartData,
+      options: chartOptions,
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mindful</title>
+  <!-- Font Awesome Cdn Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+  <!-- Import Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700">
+  <style>
+    * {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+
+  body {
+    background: #C1E1C1;
+  }
+
+  .container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    left: 0;
+    background: #fff;
+    width: 280px;
+    overflow: hidden;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+
+  .logo {
+    text-align: center;
+    display: flex;
+    margin: 10px 0 0 10px;
+  }
+
+  .logo img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+  }
+
+  .logo span {
+    font-weight: bold;
+    padding-left: 15px;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+
+  a {
+    position: relative;
+    color: rgb(85, 83, 83);
+    font-size: 14px;
+    display: table;
+    width: 280px;
+    padding: 10px;
+  }
+
+  nav .fas {
+    position: relative;
+    width: 70px;
+    height: 40px;
+    top: 14px;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .nav-item {
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
+  }
+
+  a:hover {
+    background: #eee;
+  }
+
+  .logout {
+    position: absolute;
+    bottom: 0;
+  }
+
+  /* Main Section */
+  .main {
+    position: relative;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    transition: background 0.3s; 
+  }
+
+  .main-top {
+    display: flex;
+    width: 100%;
+  }
+
+  .main-top i {
+    position: absolute;
+    right: 0;
+    margin: 10px 30px;
+    color: rgb(110, 109, 109);
+    cursor: pointer;
+  }
+
+  .main-skills {
+    display: flex;
+    margin-top: 20px;
+  }
+
+  .main-skills .card {
+    width: 25%;
+    margin: 10px;
+    background: #fff;
+    text-align: center;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+
+  .main-skills .card h3 {
+    margin: 10px;
+    text-transform: capitalize;
+  }
+
+  .main-skills .card p {
+    font-size: 12px;
+  }
+
+  .main-skills .card button {
+    background: orangered;
+    color: #fff;
+    padding: 7px 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+  }
+
+  .main-skills .card button:hover {
+    background: rgba(223, 70, 15, 0.856);
+  }
+
+  .main-skills .card i {
+    font-size: 22px;
+    padding: 10px;
+  }
+
+  /* Courses */
+  .main-course {
+    margin-top: 20px;
+    text-transform: capitalize;
+  }
+
+  .main.active {
+    background-color: transparent; /* Change this to the desired background color for the active section */
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Optionally, you can add overflow: hidden to prevent unwanted overflow */
+}
+
+
+  .course-box {
+    width: 100%;
+    height: 300px;
+    padding: 10px 10px 30px 10px;
+    margin-top: 10px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+
+  .course-box ul {
+    list-style: none; /* This removes the bullets */
+    display: flex;
+  }
+
+  .course-box ul li {
+    margin: 10px;
+    color: gray;
+    cursor: pointer;
+  }
+
+  .course-box ul .active {
+    color: #000;
+    border-bottom: 1px solid #000;
+  }
+
+  .course-box .course {
+    display: flex;
+  }
+
+  .box {
+    width: 33%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    background: rgb(235, 233, 233);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  }
+
+  .box p {
+    font-size: 12px;
+    margin-top: 5px;
+  }
+
+  .box button {
+    background: #000;
+    color: #fff;
+    padding: 7px 10px;
+    border-radius: 10px;
+    margin-top: 3rem;
+    cursor: pointer;
+  }
+
+  .box button:hover {
+    background: rgba(0, 0, 0, 0.842);
+  }
+
+  .box i {
+    font-size: 7rem;
+    float: right;
+    margin: -20px 20px 20px 0;
+  }
+
+  .html {
+    color: rgb(25, 94, 54);
+  }
+
+  .css {
+    color: rgb(104, 179, 35);
+  }
+
+  .js {
+    color: rgb(28, 98, 179);
+  }
+
+  #chatSection button {
+    background: #000;
+    color: #fff;
+    padding: 7px 10px;
+    border-radius: 10px;
+    margin-top: 3rem;
+    cursor: pointer;
+}
+
+#chatSection button:hover {
+    background: rgba(0, 0, 0, 0.842);
+}
+
+.dynamic-container {
+      margin-left: 281px; /* Adjust based on your navigation bar width */
+      padding: 20px;
+      transition: margin-left 0.3s; /* Smooth transition for margin change */
+      width: auto;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <ul>
+        <li><a href="#" class="logo">
+          <img src="/static/images/logo.png" alt="">
+          <span class="nav-item">DashBoard</span>
+        </a></li>
+        <li class="journalButton"><a href="#" id="journalButton">
+          <i class="fas fa-book"></i>
+          <span class="nav-item">Journal</span>
+        </a></li>
+        <li class="moodanalysisButton"><a href="#" id="moodanalysisButton">
+          <i class="fas fa-chart-bar"></i>
+          <span class="nav-item">Mood Analytics</span>
+
+        <li class="musicButton"><a href="#" id="musicButton">
+          <i class="fas fa-music"></i>
+          <span class="nav-item">Music Recomendation</span>
+        </a></li>
+        <li class="chatButton"><a href="#" id="chatButton">
+          <i class="fas fa-user"></i>
+          <span class="nav-item">Chat</span>
+        </a></li>
+        <li class="calendarButton"><a href="#" id="calendarButton">
+          <i class="fas fa-calendar"></i>
+          <span class="nav-item">Appointment</span>
+        </a></li>
+        <li><a href="" class="logout">
+          <i class="fas fa-sign-out-alt"></i>
+          <span class="nav-item">Log out</span>
+        </a></li>
+      </ul>
+    </nav>
+
+    <div class="dynamic-container">
+        <section class="main active" id="homeSection">
+        </section>
+    </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Store the original content of the main section
+    var originalMainContent = loadJournalContent();
+
+    // Attach click event listeners to each button
+    document.getElementById("musicButton").addEventListener("click", function (event) {
+        event.preventDefault();
+        loadMusicContent();
+    });
+
+    document.getElementById("chatButton").addEventListener("click", function (event) {
+        event.preventDefault();
+        loadChatContent();
+    });
+
+    document.getElementById("calendarButton").addEventListener("click", function (event) {
+        event.preventDefault();
+        loadCalendarContent();
+    });
+
+    document.getElementById("moodanalysisButton").addEventListener("click", function (event) {
+        event.preventDefault();
+        loadMoodanalysisContent();
+    });
+
+    document.getElementById("journalButton").addEventListener("click", function (event) {
+        event.preventDefault();
+        loadJournalContent();
+    });
+});
+
+function loadMusicContent() {
+    // Fetch content from the correct URL or build it as needed
+    var musicContentUrl = '/dashboard/music/';
+
+    // Fetch the HTML content
+    fetch(musicContentUrl)
+        .then(response => response.text())
+        .then(htmlContent => {
+            // Update the home section with the title, text, and fetched HTML content
+            var homeSection = document.getElementById('homeSection');
+            homeSection.classList.add("active");
+            homeSection.innerHTML = `
+                <div id="musicContent">${htmlContent}</div>
+            `;
+        })
+        .catch(error => {
+            console.error('Error loading journal content:', error);
+        });
+}
+
+function loadChatContent() {
+    // Fetch content from the correct URL or build it as needed
+    var title = 'Chat Section';
+    var text = 'Welcome to the Chat section.';
+    var formContent = `
+        <!-- ... (your existing home content) ... -->
+    `;
+
+    // Update the home section with the title, text, and form content
+    var homeSection = document.getElementById('homeSection');
+    homeSection.classList.add("active");
+    homeSection.innerHTML = `
+        <h2>${title}</h2>
+        <p>${text}</p>
+        ${formContent}
+    `;
+}
+
+
+function loadCalendarContent() {
+    // Fetch HTML content
+    var calendarContentUrl = '/dashboard/calendar/';
+    fetch(calendarContentUrl)
+        .then(response => response.text())
+        .then(htmlContent => {
+            // Update the home section with the title, text, and fetched HTML content
+            var homeSection = document.getElementById('homeSection');
+            homeSection.classList.add("active");
+            homeSection.innerHTML = `
+                <div id="calendarContent">${htmlContent}</div>
+            `;
+
+            // Fetch JavaScript content
+            var calendarScriptUrl = '/static/js/appointment.js';
+            fetch(calendarScriptUrl)
+                .then(response => response.text())
+                .then(jsContent => {
+                    // Create a script element and set the fetched JavaScript content
+                    var scriptElement = document.createElement('script');
+                    scriptElement.innerHTML = jsContent;
+
+                    // Append the script element to the document body
+                    document.body.appendChild(scriptElement);
+                })
+                .catch(error => {
+                    console.error('Error loading calendar JavaScript:', error);
+                });
+        })
+        .catch(error => {
+            console.error('Error loading calendar content:', error);
+        });
+}
+
+function loadJournalContent() {
+    // Fetch content from the correct URL or build it as needed
+    var journalContentUrl = '/dashboard/journal/';
+
+    // Fetch the HTML content
+    fetch(journalContentUrl)
+        .then(response => response.text())
+        .then(htmlContent => {
+            // Update the home section with the title, text, and fetched HTML content
+            var homeSection = document.getElementById('homeSection');
+            homeSection.classList.add("active");
+            homeSection.innerHTML = `
+                <div id="journalContent">${htmlContent}</div>
+            `;
+        })
+        .catch(error => {
+            console.error('Error loading journal content:', error);
+        });
+}
+
+
+function loadMoodanalysisContent() {
+    // Fetch content from the correct URL or build it as needed
+    var MoodanalysisContentUrl = '/dashboard/analysis/';
+
+    // Fetch the HTML content
+    fetch(MoodanalysisContentUrl)
+        .then(response => response.text())
+        .then(htmlContent => {
+            // Update the home section with the title, text, and fetched HTML content
+            var homeSection = document.getElementById('homeSection');
+            homeSection.classList.add("active");
+            homeSection.innerHTML = `
+                <div id="MoodanalysisContent">${htmlContent}</div>
+            `;
+        })
+        .catch(error => {
+            console.error('Error loading mood analytics content:', error);
+        });
+}
+</script>
+</body>
+</html>

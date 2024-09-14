@@ -1,0 +1,378 @@
+<!-- login.html -->
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        
+        <form method="post" action="{% url 'myapp:login' %}">
+            {% csrf_token %}
+            
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+        {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>-->
+<!--<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap">
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f5f5f5;
+        }
+
+        .main {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form {
+            text-align: center;
+        }
+
+        .form__icons {
+            margin-bottom: 20px;
+        }
+
+        .form__icon {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .form__span {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .form__input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .form__button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .submit {
+            background-color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="container a-container" id="a-container">
+            <form id="a-form" class="form" method="" action="">
+                <h2 class="form_title title">Create Account</h2>
+                <div class="form__icons">
+                  
+                </div>
+                <span class="form__span">or use email for registration</span>
+                <input class="form__input" type="text" placeholder="Name">
+                <input class="form__input" type="text" placeholder="Email">
+                <input class="form__input" type="password" placeholder="Password">
+                <button class="form__button button submit">SIGN UP</button>
+            </form>
+        </div>
+
+        <div class="container b-container" id="b-container">
+            <form id="b-form" class="form" method="post" action="{% url 'myapp:login' %}">
+                {% csrf_token %}
+                <h2 class="form_title title">Sign in to Website</h2>
+              
+                <input class="form__input" type="text" id="username" placeholder="Username" name="username" required>
+                <input class="form__input" type="password" id="password" placeholder="Password" name="password" required>
+                <button class="form__button button submit" type="submit">SIGN IN</button>
+            </form>
+
+            {% if error_message %}
+            <p style="color: red;">{{ error_message }}</p>
+            {% endif %}
+            
+        </div>
+    </div>
+    
+    <script>
+        // Add your JavaScript code here
+    </script>
+</body>
+</html>-->
+
+
+
+<!--<!DOCTYPE html>
+
+{% load static %}
+<html lang="es" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/static/css/login.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="main">
+      <div id="a-container" class="container a-container">
+        <form id="a-form" class="form" method="" action="">
+          <h2 class="form_title title">Create Account</h2>
+          <div class="form__icons">
+            <img class="form__icon" src="data:image/svg+xml;base64,...your_base64_encoded_image..." alt="">
+            <img class="form__icon" src="data:image/svg+xml;base64,...your_base64_encoded_image..." alt="">
+          </div>
+          <span class="form__span">or use email for registration</span>
+          <input class="form__input" type="text" placeholder="Name">
+          <input class="form__input" type="text" placeholder="Email">
+          <input class="form__input" type="password" placeholder="Password">
+          <button class="form__button button submit">SIGN UP</button>
+        </form>
+      </div>
+      <div id="b-container" class="container b-container">
+        <form id="b-form" class="form" method="post" action="{% url 'myapp:login' %}">
+            {% csrf_token %}
+            <h2 class="form_title title">Sign in to Website</h2>
+          
+            <input class="form__input" type="text" id="username" placeholder="Username" name="username" required>
+            <input class="form__input" type="password" id="password" placeholder="Password" name="password" required>
+            <button class="form__button button submit" type="submit">SIGN IN</button>
+        </form>
+
+        {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+        {% endif %}
+      </div>
+    </div>
+    <script>
+        /*
+            Designed by: SELECTO
+            Original image: https://dribbble.com/shots/5311359-Diprella-Login
+        */
+
+        // login.js
+        // login.js
+console.log("Script loaded");
+
+document.addEventListener("DOMContentLoaded", function() {
+    let switchCtn = document.querySelector("#switch-cnt");
+    let switchC1 = document.querySelector("#switch-c1");
+    let switchC2 = document.querySelector("#switch-c2");
+    let switchCircle = document.querySelectorAll(".switch__circle");
+    let aContainer = document.querySelector("#a-container");
+    let bContainer = document.querySelector("#b-container");
+    let allButtons = document.querySelectorAll(".submit");
+
+    let changeForm = (e) => {
+        switchCtn.classList.add("is-gx");
+        setTimeout(function() {
+            switchCtn.classList.remove("is-gx");
+        }, 1500);
+
+        switchCtn.classList.toggle("is-txr");
+        switchCircle[0].classList.toggle("is-txr");
+        switchCircle[1].classList.toggle("is-txr");
+
+        switchC1.classList.toggle("is-hidden");
+        switchC2.classList.toggle("is-hidden");
+        aContainer.classList.toggle("is-txl");
+        bContainer.classList.toggle("is-txl");
+        bContainer.classList.toggle("is-z200");
+    };
+
+    for (var i = 0; i < allButtons.length; i++)
+        allButtons[i].addEventListener("click", function(e) {
+            e.preventDefault();
+        });
+
+    let switchBtn = document.querySelector(".switch__button");
+    if (switchBtn) {
+        switchBtn.addEventListener("click", changeForm);
+    }
+});
+
+    </script>
+  </body>
+</html>-->
+
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="/static/css/login.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+      </head>
+<body>
+    <section>
+      <div class="container">
+        <div class="user signinBx">
+          <div class="imgBx"><img src="/static/images/students5.png" alt="" /></div>
+          <div class="formBx">
+            
+            <form method="post" action="{% url 'myapp:login' %}">
+              {% csrf_token %}
+              <h2>Sign In As A Student</h2>
+              
+              <!--<input type="text" name="" placeholder="Username" />
+              <input type="password" name="" placeholder="Password" />-->
+              <input type="text" id="username" placeholder="Username" name="username" required>
+              <input type="password" id="password" placeholder="Password" name="password" required>
+              <div class="error-message">
+                {% if error_message %}
+                  <p style="color: red;">{{ error_message }}</p>
+                {% endif %}
+              </div>
+              <div class="button-container">
+                <input type="submit" value="Sign In" />
+                <span class="or-text">or</span>
+                <a href="{% url 'myapp:signup' %}" class="signup-button">Sign Up</a>
+              </div>
+              <p class="signup">
+                Are you a counselor ?
+                <a href="#" onclick="toggleForm();">Sign In Here.</a>
+              </p>
+            </form>
+
+
+
+        
+
+          </div>
+        </div>
+        <div class="user signupBx">
+          <div class="formBx">
+            <form method="post" action="{% url 'myapp:login' %}">
+                {% csrf_token %}
+              <h2>Sign In As A Counselor</h2>
+              
+              <input type="text" name="" placeholder="Username" />
+              <input type="password" name="" placeholder="Password" />
+              <div class="error-message">
+                {% if error_message %}
+                  <p style="color: red;">{{ error_message }}</p>
+                {% endif %}
+              </div>
+              <input type="submit" name="" value="Login" />
+              <p class="signup">
+                Are you a student ?
+                <a href="#" onclick="toggleForm();">Sign in Here.</a>
+              </p>
+            </form>
+    
+          </div>
+          <div class="imgBx"><img src="/static/images/counselors5.png" alt="" /></div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script>
+        const toggleForm = () => {
+        const container = document.querySelector('.container');
+        container.classList.toggle('active');
+        };
+      </script>
+</html>

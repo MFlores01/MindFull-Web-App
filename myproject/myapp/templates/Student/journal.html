@@ -1,0 +1,583 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.13.1/css/all.css"
+    integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q"
+    crossorigin="anonymous"
+  />
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet"
+  />
+  <title>My Journal</title>
+  <style>
+/* My Starter Template */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', monospace;
+  line-height: 1.6;
+  background: rgba(175, 238, 238, 0.3);
+  color: #4F6F52;
+  padding: 0;
+  max-width: 900px;
+}
+
+/* Global Typography */
+
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3rem;
+  text-align: center; /* Center align the h1 element */
+}
+
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+}
+
+h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+p {
+  font-size: 1rem;
+}
+
+form,
+textarea {
+  font-size: 1rem;
+}
+
+/* Button Standard */
+
+.btn-main,
+.btn-light,
+.btn-dark,
+.btn-delete {
+  display: block;
+  padding: 0.6rem 2rem;
+  margin: 1rem;
+  transition: all 0.1s;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn-main {
+  color: #ECE3CE;
+  background-color: #65451F;
+}
+
+.btn-light {
+  color: #0a2472;
+  background-color: white;
+}
+
+.btn-dark {
+  color: white;
+  background-color: #0a2472;
+}
+
+.btn-delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-delete i {
+  font-size: 1.5rem; /* Adjust the size of the trash can icon */
+  color: #65451F; /* Adjust the color of the trash can icon */
+}
+
+.btn-delete:hover i {
+  color: #4F6F52; /* Adjust the color on hover */
+}
+
+.btn-main:hover,
+.btn-light:hover,
+.btn-dark:hover,
+.btn-delete:hover {
+  background-color: #ECE3CE;
+  color: #4F6F52;
+  font-weight: 700;
+  transform: scale(1.08);
+}
+
+/* Add styling for the entry cards */
+.entry-card {
+  position: relative;
+  margin: 1em;
+  padding: 1em;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  max-height: 300px;
+  transition: transform 0.3s ease-in-out;
+  overflow: hidden;
+  list-style: none; /* Remove default list styles */
+  background-color: #ECE3CE; /* Set background color for entry cards */
+  word-wrap: break-word;
+}
+
+.entry-card:hover {
+  transform: scale(1.05);
+}
+
+/* Styles for entry title */
+.entry-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #4F6F52; /* Set font color for the title */
+  margin-bottom: 0.5em; /* Add space below the title */
+}
+
+/* Styles for entry date */
+.entry-date {
+  font-size: 1rem;
+  color: #888;
+}
+
+/* Styles for entry content */
+.entry-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  font-size: 1rem;
+  color: #4F6F52; /* Set font color for the content */
+}
+
+/* Project Starts Here */
+
+/* Journal Entry Section */
+
+/* Title */
+
+.entry-text-title {
+  width: 20em;
+  margin: 1em auto;
+  padding: 1em;
+  border-radius: 10px;
+  border: unset;
+  background-color: #ECE3CE;
+  font-family: 'Space Mono', monospace;
+}
+
+.entry-text-title:focus {
+  outline-color: #4F6F52;
+  font-family: 'Space Mono', monospace;
+  color: #4F6F52;
+  font-size: 1rem;
+}
+
+.entry-text-title::placeholder {
+  color: #4F6F52;
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem;
+}
+
+.entry-text-title::-ms-value {
+  color: #4F6F52;
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem;
+}
+
+/* Text Box */
+
+.container-row-journal {
+  display: flex;
+  flex-direction: column; /* Change to column layout */
+  align-items: center; /* Center align items in the column */
+}
+
+.entry-form {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.journal-label {
+  display: block;
+  line-height: 1.6;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.entry-text-box {
+  width: 100%;
+  height: 20em;
+  margin: 1em auto;
+  padding: 1em;
+  border-radius: 10px;
+  border: unset;
+  background-color: #ECE3CE;
+  font-family: 'Space Mono', monospace;
+}
+
+@media (min-width: 769px) {
+  .entry-text-box {
+    width: 40em;
+    height: 20em;
+    margin: 1em auto;
+    padding: 1em;
+    border-radius: 10px;
+    border: unset;
+    background-color: #ECE3CE;
+    font-family: 'Space Mono', monospace;
+  }
+}
+
+.entry-text-box:focus {
+  outline-color: #4F6F52;
+  font-family: 'Space Mono', monospace;
+  color: #4F6F52;
+  font-size: 1rem;
+}
+
+.entry-text-box::placeholder {
+  color: #4F6F52;
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem;
+}
+
+.entry-submit-btn {
+  margin: 0;
+}
+
+/* Journal Results Section */
+
+.sectionEntryResults {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.entryResultList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  padding: 0; /* Remove default padding for the list */
+}
+
+.heading-results {
+  text-align: center;
+  font-size: 2.0rem; /* Adjust font size for the heading */
+  font-weight: bold; /* Add bold style */
+  text-decoration: underline;
+  text-decoration-color: #ECE3CE;
+  margin-bottom: 10px; /* Add margin at the bottom for spacing */
+}
+
+.entry-item {
+  width: calc(50% - 1em); /* Adjust the width of each entry to 50% for two-column layout */
+  margin-bottom: 1em; /* Add spacing between entries */
+}
+
+.entry-row {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1em;
+  margin-bottom: 1em;
+  transition: transform 0.3s ease-in-out;
+}
+
+.entry-row:hover {
+  transform: scale(1.05);
+}
+
+.entry-date {
+  font-size: 1rem;
+  color: #888;
+}
+
+/* Single delete button with trash can icon */
+.btn-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-delete i {
+  font-size: 1.5rem; /* Adjust the size of the trash can icon */
+  color: #65451F; /* Adjust the color of the trash can icon */
+}
+
+.btn-delete:hover i {
+  color: #4F6F52; /* Adjust the color on hover */
+}
+
+/* Journal Entry Page */
+
+.journal-entry-section {
+  padding: 2em;
+}
+
+.entry-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.btn-edit,
+.btn-delete-entry {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-edit i,
+.btn-delete-entry i {
+  margin-right: 0.5em;
+}
+
+.word-char-count {
+  margin-top: 1em;
+  text-align: center;
+  color: #888;
+}
+
+/* Add additional styling for the editable content */
+.journal-entry-content[contenteditable="true"] {
+  border: 2px solid #ddd;
+  padding: 1em;
+  border-radius: 10px;
+  font-size: 1rem; /* Adjust font size for the content */
+}
+
+.journal-entry-content[contenteditable="true"]:focus {
+  outline-color: #4F6F52;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .entry-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn-edit,
+  .btn-delete-entry {
+    margin-top: 1em;
+  }
+}
+
+/* Add this style to remove hyperlink colors */
+.no-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Style for the title within the entry card */
+.text-subtitle-1.title {
+    font-size: 1.5rem; /* Adjust the font size for the title */
+    font-weight: bold; /* Adjust the font weight for the title */
+  }
+  
+  /* Style for the date within the entry card */
+  .text-subtitle-1.date {
+    font-size: 1rem; /* Adjust the font size for the date */
+    color: #888; /* Adjust the color for the date */
+  }
+a {
+  color: inherit;
+  text-decoration: none;
+}
+  </style>
+</head>
+<body>
+  <header><h1 class="title">My Personal Journal</h1></header>
+
+  <!-- Journal Entry Section -->
+  <section class="section journal-section">
+    <div class="container">
+      <div class="container-row container-row-journal">
+        <div class="container-item container-item-journal">
+          <form id="entryForm" method="post" action="{% url 'myapp:journal' %}">
+            {% csrf_token %}
+            
+            <!-- Entry Title -->
+            <label for="{{ form.title.id_for_label }}" class="journal-label">Entry Title</label>
+            {{ form.title }}
+            
+            <!-- Today's Entry -->
+            <label for="{{ form.content.id_for_label }}" class="journal-label">Today's Entry</label>
+            {{ form.content }}
+            
+            <button class="btn-main entry-submit-btn" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Journal Entry Results -->
+<section class="section sectionEntryResults" id="entryResultsSection">
+    <div class="container">
+      <!-- Add the heading for Journal Entries -->
+      <div class="heading-results">Journal Entries</div>
+      <div class="entryContainer">
+        <!-- Loop through your journal entries and create clickable card-like entries -->
+        {% for entry in journal_entries %}
+          <a href="{% url 'myapp:journal_entry' title=entry.title %}" class="entry-link">
+            <div class="entry-card">
+              <div class="text-subtitle-1 title text-primary font-weight-bold no-link">
+                {{ entry.title }}
+              </div>
+              <div class="text-subtitle-1 date text-primary no-link">{{ entry.date }}</div>
+              <div class="markdownLite content text-medium-emphasis mt-2 no-link">
+                <p dir="auto">{{ entry.content }}</p>
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  
+
+  <script>
+// My Starter JavaScript Template
+
+// Define entryResultContainer at a global scope
+const entryResultContainer = document.getElementById('entryResultsSection');
+
+// Function to add entry to DOM
+function addEntryToDom(entry) {
+  
+    const entryCard = document.createElement('div');
+    entryCard.className = 'entry-card';
+  
+    const titleElement = document.createElement('h3');
+    titleElement.className = 'entry-title';
+    titleElement.textContent = entry.title;
+  
+    const dateElement = document.createElement('p');
+    dateElement.className = 'entry-date';
+    dateElement.textContent = `Date Added: ${entry.date}`;
+  
+    const textElement = document.createElement('p');
+    textElement.className = 'entry-text';
+    textElement.textContent = entry.text ? entry.text.substring(0, 50) + '...' : '';
+
+  
+    entryCard.appendChild(titleElement);
+    entryCard.appendChild(dateElement);
+    entryCard.appendChild(textElement);
+  
+    entryCard.addEventListener('click', function () {
+      window.location.href = `/journal_entry/${entry.id}/`; // Update the URL structure
+    });
+  
+    entryListItem.appendChild(entryCard);
+    entryResultContainer.appendChild(entryListItem);
+  }
+  
+  // Function to handle form submission
+async function addEntryToDomAndBackend(event) {
+  event.preventDefault();
+
+  // Check if the element with ID 'entry-title' exists
+  const entryTitleElement = document.getElementById('entry-title');
+  if (!entryTitleElement) {
+      console.error('Element with ID "entry-title" not found.');
+      return;
+  }
+
+  const entry = {
+      title: entryTitleElement.value,
+      text: document.getElementById('entry').value,
+  };
+
+  try {
+      // Send a POST request to the Django backend to save the entry
+      const response = await fetch('/save_entry/', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': getCookie('csrftoken'), // Include the CSRF token
+          },
+          body: JSON.stringify(entry),
+      });
+
+      if (response.ok) {
+          // Call loadEntriesOnPageLoad to update displayed entries
+          loadEntriesOnPageLoad();
+      } else {
+          console.error('Failed to save entry to the backend');
+      }
+  } catch (error) {
+      console.error('Error:', error);
+  }
+
+  // Clear the input values after submission
+  entryTitleElement.value = '';
+  document.getElementById('entry').value = '';
+}
+
+  
+  // Event listener for form submissionz
+  entryForm.addEventListener('submit', addEntryToDomAndBackend);
+  
+  // Function to get the CSRF token from cookies
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+  
+  // Function to load entries from the backend on page load
+  async function loadEntriesOnPageLoad() {
+    try {
+      // Send a GET request to the Django backend to retrieve entries
+      const response = await fetch('/get_entries/');
+  
+      if (response.ok) {
+        const entries = await response.json();
+        entries.forEach(addEntryToDom);
+      } else {
+        console.error('Failed to fetch entries from the backend');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+  
+  // Load entries when the page loads
+  loadEntriesOnPageLoad();
+  
+  </script>
+</body>
+</html>
